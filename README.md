@@ -29,7 +29,7 @@ This project demonstrates the evolution of a todo application through multiple p
 | Phase | Status | Technology | Description |
 |-------|--------|------------|-------------|
 | **Phase I** | ✅ Complete | Python Console | In-memory todo application with CLI interface |
-| Phase II | ✅ Completed | Python + JSON | File-based persistence layer |
+| Phase II | 🚧 Planned | Python + JSON | File-based persistence layer |
 | Phase III | 📅 Future | SQLite | Database-backed storage |
 | Phase IV | 📅 Future | FastAPI | REST API layer |
 | Phase V | 📅 Future | Next.js | Web interface |
