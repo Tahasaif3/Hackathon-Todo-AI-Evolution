@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Generated files
+.next/types/**/*.ts
+
+# Logs
+*.log
+
+# Environment
+.env*
+
+# Database
+*.db
+*.sqlite
+
+# Coverage
+coverage/
