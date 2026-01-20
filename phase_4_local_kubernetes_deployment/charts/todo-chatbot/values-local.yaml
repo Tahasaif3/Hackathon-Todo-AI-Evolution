@@ -1,0 +1,65 @@
+# Local Development Values for Todo Chatbot Helm Chart
+# Copy this file to values-local.yaml and fill in your values
+
+# Namespace configuration
+namespace: todo-app
+
+# Frontend configuration
+frontend:
+  replicaCount: 2
+
+  image:
+    repository: todo-chatbot-frontend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+
+  service:
+    type: NodePort
+    port: 3000
+    nodePort: 30080
+
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+
+# Backend configuration
+backend:
+  replicaCount: 2
+
+  image:
+    repository: todo-chatbot-backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+
+  service:
+    type: NodePort
+    port: 8000
+    nodePort: 30081
+
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "1000m"
+
+# Non-sensitive configuration
+config:
+  nextPublicApiUrl: "http://192.168.49.2:30081"
+  environment: "development"
+
+# Sensitive configuration - NEVER commit this file with real values!
+# Set these via environment variables or kubectl secrets in production
+secrets:
+  databaseUrl: "postgresql://postgres:postgres@localhost:5432/todochatbot"
+  openaiApiKey: "sk-test-key"
+
+# Rolling update strategy
+rollingUpdate:
+  maxSurge: 1
+  maxUnavailable: 0

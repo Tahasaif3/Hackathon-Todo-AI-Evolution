@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(dir /s /b)",
+      "Bash(git checkout -b phase_3_ai_powered_todo_chatbot)"
     ]
   }
 }
