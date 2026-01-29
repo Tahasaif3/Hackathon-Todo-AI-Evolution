@@ -1,7 +1,10 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(git init:*)"
-    ]
-  }
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "figma-remote-mcp",
+    "vercel",
+    "neon",
+    "better-auth",
+    "context7"
+  ]
 }
