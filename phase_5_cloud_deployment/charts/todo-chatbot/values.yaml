@@ -114,14 +114,14 @@ backend:
 # For browser access, use the external NodePort address
 # Internal service communication is handled separately
 config:
-  nextPublicApiUrl: "https://tahasaif3-ai-taskflow-backend.hf.space"  # Default Minikube IP + backend NodePort
+  nextPublicApiUrl: ""  # Default Minikube IP + backend NodePort
   environment: "development"
 
 # Secrets - NEVER commit actual values!
 # These should be set via --set or values-local.yaml
 secrets:
-  databaseUrl: "postgresql://neondb_owner:npg_LsojKQF8bGn2@ep-mute-pine-a4g0wfsu-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-  openaiApiKey: "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"
+  databaseUrl: ""
+  openaiApiKey: ""
 
 # Rolling update strategy
 # maxSurge: 1 - allows one extra pod during updates

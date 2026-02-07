@@ -18,7 +18,6 @@ dependencies = [
     "openai>=1.57.4",
     "pylsp-mypy>=0.6.9",
     "fastmcp>=2.14.1",
-    "dapr>=1.13.0",
 ]
 
 [dependency-groups]

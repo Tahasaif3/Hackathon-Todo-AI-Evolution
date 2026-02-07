@@ -50,14 +50,14 @@ backend:
 
 # Non-sensitive configuration
 config:
-  nextPublicApiUrl: "https://tahasaif3-ai-taskflow-backend.hf.space"
+  nextPublicApiUrl: ""
   environment: "development"
 
 # Sensitive configuration - NEVER commit this file with real values!
 # Set these via environment variables or kubectl secrets in production
 secrets:
-  databaseUrl: "postgresql://neondb_owner:npg_LsojKQF8bGn2@ep-mute-pine-a4g0wfsu-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-  openaiApiKey: "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"
+  databaseUrl: ""
+  openaiApiKey: ""
 
 # Rolling update strategy
 rollingUpdate:

@@ -50,9 +50,9 @@ backend:
     type: ClusterIP
     port: 8000
   env:
-    DATABASE_URL: "postgresql://user:password@postgres:5432/todo_db"
-    BETTER_AUTH_SECRET: "your-secret-key-change-in-production"
-    JWT_SECRET_KEY: "your-jwt-secret-change-in-production"
+    DATABASE_URL: ""
+    BETTER_AUTH_SECRET: ""
+    JWT_SECRET_KEY: ""
   resources:
     requests:
       memory: "256Mi"
