@@ -1,0 +1,42 @@
+# Patterns to exclude from Helm chart packaging
+
+# Git files
+.git
+.git/*
+
+# IDE and editor files
+.idea
+.vscode
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Test and coverage files
+coverage/
+*.cover
+htmlcov/
+
+# Build outputs
+dist/
+build/
+*.tar.gz
+
+# Local configuration
+values-local.yaml
+values-*.yaml
+
+# Secrets (never package these)
+*.secret.yaml
+secrets/
+*.pem
+*.key
+
+# Temporary files
+*.tmp
+*.bak
+*~

@@ -1,0 +1,22 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: kafka-pubsub
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+  - name: brokers
+    value: {{ .Values.dapr.kafka.brokers }}
+  - name: consumerGroup
+    value: {{ .Values.dapr.kafka.consumerGroup }}
+  - name: clientID
+    value: {{ .Values.dapr.kafka.clientID }}
+  - name: authType
+    value: {{ .Values.dapr.kafka.authType }}
+  - name: username
+    value: {{ .Values.dapr.kafka.username }}
+  - name: password
+    value: {{ .Values.dapr.kafka.password }}
+  - name: authScheme
+    value: {{ .Values.dapr.kafka.authScheme }}

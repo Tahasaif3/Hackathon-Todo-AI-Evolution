@@ -1,0 +1,131 @@
+# Default values for todo-chatbot chart.
+# This file provides sensible defaults for local Minikube deployment.
+# Override these values in values-local.yaml for your environment.
+
+# Global settings
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+
+# Namespace configuration
+namespace: todo-app
+
+# Frontend configuration
+frontend:
+  replicaCount: 2
+
+  image:
+    repository: todo-chatbot-frontend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+
+  service:
+    type: NodePort
+    port: 3000
+    nodePort: 30080
+
+  # Resource limits for frontend container
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+
+  # Security context for frontend container
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+
+  # Liveness probe configuration
+  livenessProbe:
+    httpGet:
+      path: /
+      port: http
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+
+  # Readiness probe configuration
+  readinessProbe:
+    httpGet:
+      path: /
+      port: http
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# Backend configuration
+backend:
+  replicaCount: 2
+
+  image:
+    repository: todo-chatbot-backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+
+  service:
+    type: NodePort
+    port: 8000
+    nodePort: 30081
+
+  # Resource limits for backend container
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "1000m"
+
+  # Security context for backend container
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: true
+
+  # Liveness probe configuration
+  livenessProbe:
+    httpGet:
+      path: /api/health
+      port: http
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 5
+    failureThreshold: 3
+
+  # Readiness probe configuration
+  readinessProbe:
+    httpGet:
+      path: /api/health
+      port: http
+    initialDelaySeconds: 5
+    periodSeconds: 5
+    timeoutSeconds: 3
+    failureThreshold: 3
+
+# Configuration for non-sensitive data
+# For browser access, use the external NodePort address
+# Internal service communication is handled separately
+config:
+  nextPublicApiUrl: "https://tahasaif3-ai-taskflow-backend.hf.space"  # Default Minikube IP + backend NodePort
+  environment: "development"
+
+# Secrets - NEVER commit actual values!
+# These should be set via --set or values-local.yaml
+secrets:
+  databaseUrl: "postgresql://neondb_owner:npg_LsojKQF8bGn2@ep-mute-pine-a4g0wfsu-pooler.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+  openaiApiKey: "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"
+
+# Rolling update strategy
+# maxSurge: 1 - allows one extra pod during updates
+# maxUnavailable: 0 - ensures all pods stay available during update
+rollingUpdate:
+  maxSurge: 1
+  maxUnavailable: 0
